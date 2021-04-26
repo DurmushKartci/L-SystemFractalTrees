@@ -1,30 +1,27 @@
-var axiom = "A";
+var axiom = "F";
 var sentence = axiom;
 
 var rule = [];
 
 rule[0] = {
-    a: "A",
-    b: "AB"
-}
-
-rule[1] = {
-    a: "B",
-    b: "A"
+    a: "F",
+    b: "FF+[+F-F-F]-[-F+F+F]"
 }
 
 function generate() {
     var nextSentence = "";
-    for (var i of sentence.length) {
+    for (var i = 0; i < sentence.length; i++) {
         var current = sentence.charAt(i);
-        if (current == rule[0].a) {
-            nextSentence += rule[0].b;
-        } else if (current == rule[1].a) {
-            nextSentence += rule[1].b;
-        } else {
+        var found = false;
+        for (var j = 0; j < rule.length; j++) {
+            if (current == rule[j].a) {
+                found = true;
+                nextSentence += rule[j].b;
+            }
+        }
+        if (!found) {
             nextSentence += current;
         }
-
     }
     sentence = nextSentence;
     createP(sentence);
