@@ -30,7 +30,11 @@ function generate() {
 }
 
 function turtle() {
+    background(51);
+    resetMatrix();
+    translate(width / 2, height);
     len *= 0.55;
+    stroke(255, 75);
     for (var i = 0; i < sentence.length; i++) {
         var current = sentence.charAt(i);
         if (current == "F") {
@@ -52,7 +56,6 @@ function setup() {
     angle = radians(25);
     createCanvas(500, 500);
     background(51);
-    translate(width / 2, height);
     stroke(255, 100);
     turtle();
     createP(axiom);
